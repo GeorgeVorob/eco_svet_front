@@ -1,23 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 
+import * as pages from './pages'
+
+var a: string;
+
+function getData() {
+  a = 'test123';
+}
+
 function App() {
+  getData();
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link to="/home">Главная</Link>
+        <Link to="/Videos">Видео</Link>
+        {a}
+        <Routes>
+          <Route path="home" element={<pages.General />} />
+          <Route path="Videos" element={<pages.Videos />} />
+        </Routes>
       </header>
     </div>
   );
