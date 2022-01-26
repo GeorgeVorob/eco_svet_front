@@ -1,0 +1,20 @@
+.nav-element {
+    color: rgb(85, 110, 108) !important; 
+    font-family: Play, sans-serif !important;
+    font-size: 17px !important;
+    border: none !important;
+    border-radius: 0% !important;
+    box-shadow: none !important;
+    height: 50px !important;
+    padding: 0px 27px 0px 27px !important;
+    white-space: nowrap !important;
+    background-color: white !important;
+
+    display: flex !important;
+    align-items: center !important;
+}
+.nav-element:hover, .nav-element.active {
+    color: white !important;
+    background-color: #f0dd32 !important;
+    border-color: #f0dd32 !important;
+}

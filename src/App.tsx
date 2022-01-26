@@ -8,6 +8,8 @@ import {
 import './App.css';
 
 import * as pages from './pages'
+import * as RB from 'react-bootstrap'
+import { Header, Footer } from './components'
 
 var a: string;
 
@@ -18,17 +20,20 @@ function getData() {
 function App() {
   getData();
   return (
-    <div className="App">
-      <header className="App-header">
-        <Link to="/home">Главная</Link>
-        <Link to="/Videos">Видео</Link>
-        {a}
+    <RB.Container style={{ width: "100vw" }}>
+      <RB.Row>
+        <Header></Header>
+      </RB.Row>
+      <RB.Row style={{ minHeight: "100vh" }}>
         <Routes>
-          <Route path="home" element={<pages.General />} />
+          <Route path="" element={<pages.General />} />
           <Route path="Videos" element={<pages.Videos />} />
         </Routes>
-      </header>
-    </div>
+      </RB.Row>
+      <RB.Row>
+        <Footer></Footer>
+      </RB.Row>
+    </RB.Container>
   );
 }
 
