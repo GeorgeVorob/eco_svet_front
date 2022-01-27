@@ -9,7 +9,7 @@ function Header() {
     return (
         <header className="App-header">
             <RB.Navbar>
-                <Nav>
+                <Nav className="m-auto">
                     <Nav.Link as={NavLink} to='/' className="nav-element">
                         Главная
                     </Nav.Link>

@@ -20,7 +20,7 @@ function getData() {
 function App() {
   getData();
   return (
-    <RB.Container style={{ width: "100vw" }}>
+    <RB.Container fluid>
       <RB.Row>
         <Header></Header>
       </RB.Row>
