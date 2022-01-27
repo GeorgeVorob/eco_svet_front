@@ -7,9 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
 
+
 const rootElement = document.getElementById("root");
 ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </>
 ), document.getElementById('root'))

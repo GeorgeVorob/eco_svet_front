@@ -1,0 +1,18 @@
+@font-face {
+     font-family: "Poppins-ExtraLight";
+    src: url("//fonts.gstatic.com/s/poppins/v5/h3r77AwDsldr1E_2g4qqGFQlYEbsez9cZjKsNMjLOwM.eot?#iefix") format("eot"),
+    url("//fonts.gstatic.com/s/poppins/v5/h3r77AwDsldr1E_2g4qqGPk_vArhqVIZ0nv9q090hN8.woff2") format("woff2"),
+    url("//fonts.gstatic.com/s/poppins/v5/h3r77AwDsldr1E_2g4qqGBsxEYwM7FgeyaSgU71cLG0.woff") format("woff"),
+    url("//fonts.gstatic.com/s/poppins/v5/h3r77AwDsldr1E_2g4qqGC3USBnSvpkopQaUR-2r7iU.ttf") format("truetype"),
+    url("//fonts.gstatic.com/l/font?kit=h3r77AwDsldr1E_2g4qqGKWUboTb-jS2tyCOQMtm97g&skey=1bdc08fe61c3cc9e&v=v5#Poppins") format("svg"); font-display: block; 
+}
+
+@font-face {
+    font-family: 'Play';
+    src: url('./fonts/Play-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+

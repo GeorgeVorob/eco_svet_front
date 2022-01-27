@@ -2,7 +2,13 @@ import React from "react";
 
 function Footer() {
     return (
-        <h1>footer</h1>
+        <span
+            style={{
+                textAlign: "center",
+                font: "24px Play, sans-serlif !important",
+                color: "rgb(85, 110, 108)"
+            }}
+        >Наши поставщики</span>
     );
 }
 

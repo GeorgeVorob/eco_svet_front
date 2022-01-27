@@ -1,0 +1,8 @@
+.general-page-items {
+    margin-top: 100px !important;
+    justify-content: center;
+}
+
+.general-page-items>:not(:last-child){
+    margin-right: 20px;
+}
