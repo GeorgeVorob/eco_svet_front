@@ -7,8 +7,8 @@ import '../css/Header.css'
 
 function Header() {
     return (
-        <header className="App-header">
-            <RB.Navbar>
+        <header className="App-header" id="top">
+            <RB.Navbar className="nav-font">
                 <Nav className="m-auto">
                     <Nav.Link as={NavLink} to='/' className="nav-element">
                         Главная

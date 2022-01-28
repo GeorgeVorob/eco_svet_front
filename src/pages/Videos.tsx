@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function Videos() {
     const [data, setData] = React.useState(null);
 

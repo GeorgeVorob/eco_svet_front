@@ -14,7 +14,7 @@ function ProjectCard() {
             >
             </Card.Img>
             <Card.Body>
-                <Card.Title>
+                <Card.Title className="main-font-2">
                     project name lololololololololololololololol
                 </Card.Title>
             </Card.Body>

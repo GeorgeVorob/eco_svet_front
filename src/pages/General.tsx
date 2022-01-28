@@ -1,10 +1,17 @@
 import React from "react";
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import { ProjectCard } from '../components'
 
 import '../css/General.css'
+import '../css/fontStyles.css'
+import { Link } from "react-router-dom";
 
 function General() {
+    function scrollUp() {
+        window.scrollTo(0, 0);
+    }
+
+
     return (
         <>
             <div
@@ -41,7 +48,7 @@ function General() {
                         <Form.Label className="mb-1">Номер телефона</Form.Label>
                         <Form.Control type="text"></Form.Control>
                     </Form.Group>
-                    <button className="btn formBtn" style={{ width: "100%" }}>Отправить</button>
+                    <button className="btn formBtn main-font-1" style={{ width: "100%" }}>Отправить</button>
                 </form>
             </div>
             <Row
@@ -52,9 +59,22 @@ function General() {
                 <ProjectCard />
                 <ProjectCard />
             </Row>
+            <div
+                style={{
+                    textAlign: "center"
+                }}
+            >
+                <Link to="./Projects"
+                    className="btn main-font-2"
+                    style={{
+                        color: "rgb(240, 221, 50)"
+                    }}
+                >
+                    Узнать больше
+                </Link>
+            </div>
         </>
     )
 }
 
 export default General
-

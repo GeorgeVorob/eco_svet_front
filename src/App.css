@@ -53,9 +53,6 @@ header {
     border: 4px solid rgba(245, 235, 148, 0.87) !important;
     border-radius: 0% !important;
     color: #eff8f7 !important;
-    font-family: poppins-semibold, poppins, sans-serif !important;
-    font-size: 17px !important;
-    font-weight: 700 !important;
 }
 .formBtn:hover {
     background-color: #f0dd32 !important;

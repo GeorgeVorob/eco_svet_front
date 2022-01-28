@@ -1,0 +1,20 @@
+.main-font-1 {
+    font-family: Segoe UI !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+}
+
+.nav-font {
+    font-family: Play, sans-serif !important;
+    font-size: 17px !important;
+}
+
+.main-font-2 {
+    font: 24px Play, sans-serlif !important;
+}
+a.main-font-2 {
+    text-decoration: none;
+}
+a.main-font-2:hover {
+    color: rgb(85, 110, 108) !important;
+}
