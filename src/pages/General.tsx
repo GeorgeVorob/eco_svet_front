@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Row } from "react-bootstrap";
 import { ProjectCard } from '../components'
 
 import '../css/General.css'
 import '../css/fontStyles.css'
 import { Link } from "react-router-dom";
+import Project from "../models/models";
+import { getProjects } from "../api/api";
+
+type generalState = {
+    projects: Project[];
+}
 
 function General() {
-    function scrollUp() {
-        window.scrollTo(0, 0);
-    }
+
+    const [state, setState] = useState<generalState>({ projects: [] });
+
+    useEffect(() => {
+        getProjects().then(res => setState({ ...state, projects: res }));
+    }, [])
 
 
     return (
@@ -54,10 +63,7 @@ function General() {
             <Row
                 className="general-page-items"
             >
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
+                {state.projects.map(e => { return (<ProjectCard key={e.id} id={e.id} name={e.name} photos={e.photos} />) })}
             </Row>
             <div
                 style={{
