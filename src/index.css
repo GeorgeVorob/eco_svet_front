@@ -15,4 +15,7 @@
     font-display: swap;
 }
 
-
+/* @font-face kit by Fonts2u (https://fonts2u.com) */
+@font-face {font-family:"Play-Bold";
+    src:url("./fonts/Play-Bold.ttf") format("truetype");
+    font-weight:normal;font-style:normal;}

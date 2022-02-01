@@ -30,7 +30,7 @@ function Header() {
                             alt="logo"
                             src="/headerLogo.png"
                             className="d-inline-block align-top"
-                            style={{ height: "100%" }}
+                            style={{ height: "100%", marginLeft: "50px" }}
                         ></img>
                     </RB.Navbar.Brand>
                 </Nav>
