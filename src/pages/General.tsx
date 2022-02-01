@@ -37,12 +37,15 @@ function General() {
         console.log("data:", e);
         fetch("/live_contact", {
             method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 name: state.formName,
                 surname: state.formSurname,
                 email: state.formEmail,
                 address: state.formAddress,
-                phone: state.formPhone,
+                phone: state.formPhone
             }),
         })
     }
