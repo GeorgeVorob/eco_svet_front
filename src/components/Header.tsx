@@ -2,7 +2,6 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom"
 import * as RB from "react-bootstrap"
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import '../App.css'
 import '../css/Header.css'
 
 function Header() {

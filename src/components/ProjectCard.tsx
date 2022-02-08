@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import { Card } from 'react-bootstrap'
-import { getImage } from "../api/api";
+import { getProjectImage } from "../api/api";
 import '../css/ProjectCard.css'
-import Project from "../models/models";
+import { Project } from "../models/models";
 
 function ProjectCard(props: Project) {
 
     const [imgPath, setImgPath] = useState<string>("NOIMAGE");
 
     useEffect(() => {
-        getImage(props.photos[0]).then(str => {
+        getProjectImage(props.photos[0]).then(str => {
             setImgPath(str);
         }).catch(err => {
             console.log("image for " + props.name + " not found");
@@ -20,7 +20,7 @@ function ProjectCard(props: Project) {
 
     return (
         <Card
-            className="project-card"
+            className="card"
         >
             <Card.Img
                 variant="top"

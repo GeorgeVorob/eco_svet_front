@@ -5,7 +5,7 @@ import { ProjectCard } from '../components'
 import '../css/General.css'
 import '../css/fontStyles.css'
 import { Link } from "react-router-dom";
-import Project from "../models/models";
+import { Project } from "../models/models";
 import { getProjects } from "../api/api";
 
 type generalState = {
@@ -77,14 +77,8 @@ function General() {
     return (
         <>
             <div
-                style={{ padding: "0px 0px 0px 0px", backgroundImage: 'url(./mainPageImage.png)' }}
+                style={{ padding: "0px 0px 0px 0px", backgroundImage: 'url(./mainPageImage.png)', backgroundRepeat: "repeat-x" }}
             >
-                {/*<img
-                    alt="earth_background"
-                    src='./mainPageImage.png'
-                    style={{ position: "absolute", zIndex: -1 }}
-                >
-                </img>*/}
                 <form
                     style={{ float: "right", marginRight: 81, maxWidth: "220px" }}
                     className="transparent-form"

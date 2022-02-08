@@ -1,3 +1,38 @@
+.transparent-form *{
+    color: white;
+}
+
+.transparent-form label{
+    font-family: poppins-extralight, poppins, sans-serif;
+    font-size: 13px;
+}
+
+.transparent-form input {
+    border: 0px solid #44495e;
+    border-bottom-width: 1px;
+    background-color: transparent;
+    -webkit-appearance:none;
+    border-radius: 0% !important;
+    caret-color: white !important;
+    color: white !important;
+    font-family: Poppins-ExtraLight !important;
+    font-weight: 200;
+    font-size: 16px;
+    padding-left: 0px;
+}
+
+.transparent-form input:focus, .transparent-form input:hover {
+    border-color: #95d0db;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.transparent-form > p {
+    font-family: poppins-semibold, poppins, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 .general-page-items {
     margin-top: 100px !important;
     justify-content: center;

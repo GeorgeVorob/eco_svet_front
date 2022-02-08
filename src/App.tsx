@@ -6,12 +6,11 @@ import {
   Link,
   useLocation
 } from "react-router-dom";
-import './App.css';
+import './css/App.css';
 
 import * as pages from './pages'
 import * as RB from 'react-bootstrap'
 import { Header, Footer, ScrollToTopWrapper } from './components'
-import { isConditionalExpression } from 'typescript';
 
 var a: string;
 

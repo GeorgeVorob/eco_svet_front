@@ -1,9 +1,9 @@
-.project-card {
+.card {
     max-width: 260px !important;
     border: none !important;
 }
 
-.project-card .card-title {
+.card .card-title {
     text-align: center;
     color: rgb(85, 110, 108)
 }

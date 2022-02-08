@@ -1,0 +1,17 @@
+.model-table {
+    border-width: 2px !important;
+    border-style: solid !important;
+}
+
+.model-table * {
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.model-table tbody{
+    border: none;
+}

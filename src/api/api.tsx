@@ -1,4 +1,7 @@
-import Project from '../models/models';
+import { resolve } from 'node:path/win32';
+import { Category, Model, Project } from '../models/models';
+import { tmpCats, tmpMods } from './tmp'
+
 
 const getProjects = (): Promise<Project[]> => {
     return fetch("/getProject")
@@ -9,9 +12,9 @@ const getProjects = (): Promise<Project[]> => {
 }
 
 
-const getImage = (id: number): Promise<string> => {
+const getProjectImage = (id: number): Promise<string> => {
 
-    return fetch("/getImage?id=" + id)
+    return fetch("/getProjectImage?id=" + id)
         .then(res => {
             if (res.status === 404) {
                 const err = new Error("image not found");
@@ -25,4 +28,20 @@ const getImage = (id: number): Promise<string> => {
         });
 }
 
-export { getProjects, getImage }
+const getCategories = (): Promise<Category[]> => {
+    return new Promise<Category[]>((resolve, reject) => {
+        resolve(tmpCats);
+    });
+}
+
+const getModels = (): Promise<Model[]> => {
+    // return fetch("/getModel")
+    //     .then(res => {
+    //         return res.json() as any;
+    //     })
+    return new Promise<Model[]>((resolve, reject) => {
+        resolve(tmpMods);
+    });
+}
+
+export { getProjects, getProjectImage, getCategories, getModels }
