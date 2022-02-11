@@ -4,7 +4,8 @@ import {
   Routes,
   Route,
   Link,
-  useLocation
+  useLocation,
+  Outlet
 } from "react-router-dom";
 import './css/App.css';
 
@@ -29,7 +30,10 @@ function App() {
         <ScrollToTopWrapper>
           <Routes>
             <Route path="" element={<pages.General />} />
-            <Route path="Catalog" element={<pages.Catalog />} />
+            <Route path="Catalog" element={<Outlet />}>
+              <Route index element={<pages.Catalog />} />
+              <Route path=":CategoryId" element={<pages.SeriesSelector />} />
+            </Route>
             <Route path="Videos" element={<pages.Videos />} />
             <Route path="Projects" element={<pages.Projects />} />
             <Route path="Contacts" element={<pages.Contacts />} />

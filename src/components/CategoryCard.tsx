@@ -5,6 +5,7 @@ import { Category } from '../models/models'
 import { getProjectImage } from '../api/api'
 
 import '../css/CategoryCard.css'
+import { Link, Route } from "react-router-dom";
 
 const CategoryCard = (props: Category) => {
     {
@@ -28,11 +29,15 @@ const CategoryCard = (props: Category) => {
                     src={imgPath}
                 >
                 </Card.Img>
-                <Card.Body style={{ backgroundColor: "#323232" }} className="smooth-hover dark-hover">
-                    <Card.Title style={{ color: "white" }}>
-                        {props.name}
-                    </Card.Title>
-                </Card.Body>
+                <Link
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    to={"/Catalog/" + props.id}>
+                    <Card.Body style={{ backgroundColor: "#323232" }} className="smooth-hover dark-hover">
+                        <Card.Title style={{ color: "white" }}>
+                            {props.name}
+                        </Card.Title>
+                    </Card.Body>
+                </Link>
             </Card >
         )
     }

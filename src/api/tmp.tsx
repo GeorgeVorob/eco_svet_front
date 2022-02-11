@@ -2,7 +2,7 @@ import { Category, Model } from "../models/models";
 
 const tmpMods: Model[] = [
     {
-        name: "model 1",
+        name: "model 111111111111111111111111111111111111111",
         powerVT: 111,
         light_line: 1111,
         IP_protection: 1,
@@ -13,6 +13,150 @@ const tmpMods: Model[] = [
     {
         name: "model 2",
         powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 22222222222222222222222222222222222222222",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 222,
+        light_line: 2222222222222222222222222222222222222222222222222222,
+        IP_protection: 2,
+        temp: "220",
+        size: "200",
+        montage: "Двойной"
+    },
+    {
+        name: "model 2",
+        powerVT: 2222222222222222222222222222222222222222222222,
         light_line: 2222,
         IP_protection: 2,
         temp: "220",

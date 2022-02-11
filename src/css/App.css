@@ -13,7 +13,7 @@ header {
     color: #a09321 !important;
 }
 
-.smooth-hover {
+.smooth-hover, .smooth-hover * {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out !important;
 }
 .dark-hover:hover {

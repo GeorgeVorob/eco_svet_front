@@ -1,17 +1,24 @@
-.model-table {
-    border-width: 2px !important;
-    border-style: solid !important;
+.model-table tbody {
+    border-width: 2px;
 }
-
-.model-table * {
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+.model-table tbody tr:hover {
+    background-color: rgba(211, 211, 211, 0.459);
+}
+.model-table tbody {
     text-align: center;
-    vertical-align: middle;
+    width: 100%;
+    display: block;
+    height: 380px;
+    overflow-y: auto;
 }
 
-.model-table tbody{
-    border: none;
+.table-select {
+    border-radius: 0%;
+    border-width: 2px;
+    background-color: white;
+    appearance: none;
+    -moz-appearance: none;
+    box-shadow: none;
+    border-style: solid;
+    border-color: rgb(128, 128, 128);
 }
