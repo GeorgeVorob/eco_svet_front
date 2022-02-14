@@ -14,8 +14,9 @@ export type Model = {
     name: string,
     powerVT: number,
     light_line: number,
-    IP_protection: number,
-    temp: string,
+    protective_class: number,
+    tempFROM: number,
+    tempTO: number,
     size: string,
     montage: string
 }

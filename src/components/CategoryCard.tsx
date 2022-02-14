@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Category } from '../models/models'
 
@@ -10,13 +10,23 @@ import { Link, Route } from "react-router-dom";
 const CategoryCard = (props: Category) => {
     {
         const [imgPath, setImgPath] = useState<string>("NOIMAGE");
+        var mountedRef = useRef(false);
+        useEffect(() => {
+            mountedRef.current = true;
+
+            return () => {
+                mountedRef.current = false;
+            };
+        }, []);
 
         useEffect(() => {
             getProjectImage(props.imgID).then(str => {
-                setImgPath(str);
+                if (mountedRef.current)
+                    setImgPath(str);
             }).catch(err => {
                 console.log("image for " + props.imgID + " not found");
-                setImgPath("./noimage.png");
+                if (mountedRef.current)
+                    setImgPath("./noimage.png");
             })
         }, []);
 

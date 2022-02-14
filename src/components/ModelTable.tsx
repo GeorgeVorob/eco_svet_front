@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Model } from "../models/models";
 import { getModels } from '../api/api'
 import { Col, Row, Table } from "react-bootstrap";
@@ -13,12 +13,13 @@ export type ModelTableProps = {
     headerTextColor: string
 }
 
-type TableFilter = {
-    powerFROM: number;
-    powerTO: number;
+export type TableFilter = {
+    name?: string,
+    powFROM: number;
+    powTO: number;
     lightFROM: number,
     lightTO: number,
-    IPSec?: string
+    IPProt?: string
 }
 
 //TODO: деть это куда нибуть
@@ -40,36 +41,44 @@ const handle = (props: any) => {
 //TODO: вынести onChange фильтра в отдельные функции, если так окажется правильнее
 const ModelTable = (props: ModelTableProps) => {
 
-    const powerMAX = 10000;
-    const powerMIN = 100;
+    const powerMAX = 500;
+    const powerMIN = 0;
 
     const lightMAX = 20000;
     const lightMIN = 200;
 
     const [models, setModels] = useState<Model[]>([]);
     const [filter, setFilter] = useState<TableFilter>({
-        powerFROM: powerMIN,
-        powerTO: powerMAX,
+        name: "",
+        powFROM: powerMIN,
+        powTO: powerMAX,
         lightFROM: lightMIN,
-        lightTO: lightMAX
+        lightTO: lightMAX,
+        IPProt: ""
     });
+
+    var mountedRef = useRef(false);
+    useEffect(() => {
+        mountedRef.current = true;
+
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
 
     const debouncedSearch = React.useRef(
         debounce(async (filter: TableFilter) => {
-            console.log("requesting:", filter);
+            getModels(filter)
+                .then(res => {
+                    if (mountedRef.current)
+                        setModels(res);
+                })
         }, 300)
     ).current;
 
     useEffect(() => {
         debouncedSearch(filter);
     }, [filter]);
-
-    useEffect(() => {
-        getModels()
-            .then(res => {
-                setModels(res);
-            })
-    }, []);
 
     //cansel on page change
     useEffect(() => {
@@ -78,20 +87,32 @@ const ModelTable = (props: ModelTableProps) => {
         };
     }, [debouncedSearch]);
 
+    useEffect(() => {
+        getModels(filter)
+            .then(res => {
+                if (mountedRef.current)
+                    setModels(res);
+            })
+    }, []);
     return (
         <>
             <Row style={{ textAlign: "center" }}>
-                <Col sm={12}><input type="text" placeholder="Название модели"></input></Col>
+                <Col sm={12}>
+                    <input type="text" placeholder="Название модели"
+                        value={filter.name ? filter.name : ""}
+                        onChange={(e) => setFilter({ ...filter, name: e.target.value })}
+                    ></input>
+                </Col>
             </Row>
             <Row>
                 <Col style={{ marginRight: 10 }}>
                     <div>Мощность</div>
                     <Range
                         style={{ marginTop: 10, marginBottom: 21, width: "100%" }}
-                        onChange={(e) => setFilter({ ...filter, powerFROM: e[0], powerTO: e[1] })}
+                        onChange={(e) => setFilter({ ...filter, powFROM: e[0], powTO: e[1] })}
                         min={powerMIN}
                         max={powerMAX}
-                        value={[filter.powerFROM, filter.powerTO]}
+                        value={[filter.powFROM, filter.powTO]}
                         allowCross={false}
                         handle={handle}
                         marks={{ 0: powerMIN, [powerMAX]: powerMAX }}
@@ -117,8 +138,8 @@ const ModelTable = (props: ModelTableProps) => {
                     />
                 </Col>
                 <Col>
-                    <select value={filter.IPSec} onChange={(e) => setFilter({ ...filter, IPSec: e.target.value })}>
-                        <option defaultChecked disabled>Степень защиты</option>
+                    <select value={filter.IPProt} onChange={(e) => setFilter({ ...filter, IPProt: e.target.value })}>
+                        <option value="" defaultChecked>Степень защиты</option>
                         <option value="IP66">IP66</option>
                         <option value="IP65">IP65</option>
                     </select>
@@ -165,10 +186,10 @@ const ModelTable = (props: ModelTableProps) => {
                                 >{m.light_line}</td>
                                 <td
                                     style={{ width: "7.2%" }}
-                                >{m.IP_protection}</td>
+                                >{m.protective_class}</td>
                                 <td
                                     style={{ width: "14.2%" }}
-                                >{m.temp}</td>
+                                >{"от " + m.tempFROM + " до " + m.tempTO}</td>
                                 <td
                                     style={{ width: "14.2%" }}
                                 >{m.size}</td>

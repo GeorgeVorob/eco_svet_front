@@ -1,4 +1,5 @@
 import { resolve } from 'node:path/win32';
+import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
 import { tmpCats, tmpMods } from './tmp'
 
@@ -34,14 +35,32 @@ const getCategories = (): Promise<Category[]> => {
     });
 }
 
-const getModels = (): Promise<Model[]> => {
-    // return fetch("/getModel")
-    //     .then(res => {
-    //         return res.json() as any;
-    //     })
-    return new Promise<Model[]>((resolve, reject) => {
-        resolve(tmpMods);
-    });
+const getModels = (filter: TableFilter): Promise<Model[]> => {
+    if (filter.name === "") delete filter.name;
+    if (filter.IPProt === "") delete filter.IPProt;
+
+    return fetch("/getModel?" + new URLSearchParams(filter as any))
+        .then(res => {
+            if (res.status != 404) {
+                return res.json() as any;
+            }
+            else return [];
+        })
+        .then((json: any) => {
+            json.map((el: any) => {
+                //TODO: переименовать поля в базе
+                el.powerVT = el.pawerVT;
+                delete el.parwerVT;
+
+                el.tempFROM = el.temperatureROW;
+                el.tempTO = el.temperatureTO;
+                el.montage = el.motag;
+            });
+            return json
+        })
+        .catch(res => {
+            return [];
+        })
 }
 
 export { getProjects, getProjectImage, getCategories, getModels }
