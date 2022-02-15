@@ -1,7 +1,7 @@
-import { resolve } from 'node:path/win32';
 import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
-import { tmpCats, tmpMods } from './tmp'
+import { Series } from '../models/types';
+import { tmpSeries } from './tmp'
 
 
 const getProjects = (): Promise<Project[]> => {
@@ -29,9 +29,32 @@ const getProjectImage = (id: number): Promise<string> => {
         });
 }
 
+const getModeLImage = (id: number): Promise<string> => {
+
+    return fetch("/getModeLImage?id=" + id)
+        .then(res => {
+            if (res.status === 404) {
+                const err = new Error("image not found");
+                throw err;
+            } else return res
+        })
+        .then(response => response.blob())
+        .then(imageBlob => {
+            const string: string = URL.createObjectURL(imageBlob);
+            return string;
+        });
+}
+
 const getCategories = (): Promise<Category[]> => {
-    return new Promise<Category[]>((resolve, reject) => {
-        resolve(tmpCats);
+    return fetch("/getCategories")
+        .then(res => {
+            return res.json();
+        })
+}
+
+const getSeries = (): Promise<Series[]> => {
+    return new Promise<Series[]>((resolve, reject) => {
+        resolve(tmpSeries);
     });
 }
 
@@ -63,4 +86,4 @@ const getModels = (filter: TableFilter): Promise<Model[]> => {
         })
 }
 
-export { getProjects, getProjectImage, getCategories, getModels }
+export { getProjects, getProjectImage, getCategories, getModels, getModeLImage, getSeries }

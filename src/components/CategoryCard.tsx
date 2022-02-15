@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Category } from '../models/models'
 
-import { getProjectImage } from '../api/api'
+import { getModeLImage } from '../api/api'
 
 import '../css/CategoryCard.css'
 import { Link, Route } from "react-router-dom";
 
 const CategoryCard = (props: Category) => {
     {
+        console.log("cat card props:", props);
         const [imgPath, setImgPath] = useState<string>("NOIMAGE");
         var mountedRef = useRef(false);
         useEffect(() => {
@@ -20,11 +21,11 @@ const CategoryCard = (props: Category) => {
         }, []);
 
         useEffect(() => {
-            getProjectImage(props.imgID).then(str => {
+            getModeLImage(props.imgid).then(str => {
                 if (mountedRef.current)
                     setImgPath(str);
             }).catch(err => {
-                console.log("image for " + props.imgID + " not found");
+                console.log("image for " + props.imgid + " not found");
                 if (mountedRef.current)
                     setImgPath("./noimage.png");
             })

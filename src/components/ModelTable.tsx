@@ -7,6 +7,7 @@ import { debounce } from "lodash";
 
 import 'rc-slider/assets/index.css';
 import '../css/ModelTable.css'
+import { Link } from "react-router-dom";
 
 export type ModelTableProps = {
     headerBgColor: string,
@@ -174,29 +175,33 @@ const ModelTable = (props: ModelTableProps) => {
                     </tr>
                     {models.map((m, index) => {
                         return (
-                            <tr key={index}>
-                                <td
-                                    style={{ width: "22.2%" }}
-                                >{m.name}</td>
-                                <td
-                                    style={{ width: "8.2%" }}
-                                >{m.powerVT}</td>
-                                <td
-                                    style={{ width: "14.2%" }}
-                                >{m.light_line}</td>
-                                <td
-                                    style={{ width: "7.2%" }}
-                                >{m.protective_class}</td>
-                                <td
-                                    style={{ width: "14.2%" }}
-                                >{"от " + m.tempFROM + " до " + m.tempTO}</td>
-                                <td
-                                    style={{ width: "14.2%" }}
-                                >{m.size}</td>
-                                <td
-                                    style={{ width: "19.2%" }}
-                                >{m.montage}</td>
-                            </tr>
+                            <Link
+                                style={{ textDecoration: 'none', color: 'inherit', display: 'contents' }}
+                                to={"/Models/" + m.id}>
+                                <tr key={index}>
+                                    <td
+                                        style={{ width: "22.2%" }}
+                                    >{m.name}</td>
+                                    <td
+                                        style={{ width: "8.2%" }}
+                                    >{m.powerVT}</td>
+                                    <td
+                                        style={{ width: "14.2%" }}
+                                    >{m.light_line}</td>
+                                    <td
+                                        style={{ width: "7.2%" }}
+                                    >{m.protective_class}</td>
+                                    <td
+                                        style={{ width: "14.2%" }}
+                                    >{"от " + m.tempFROM + " до " + m.tempTO}</td>
+                                    <td
+                                        style={{ width: "14.2%" }}
+                                    >{m.size}</td>
+                                    <td
+                                        style={{ width: "19.2%" }}
+                                    >{m.montage}</td>
+                                </tr>
+                            </Link>
                         )
                     })}
                 </tbody>

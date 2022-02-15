@@ -33,17 +33,21 @@ function App() {
             <Route path="Catalog" element={<Outlet />}>
               <Route index element={<pages.Catalog />} />
               <Route path=":CategoryId" element={<pages.SeriesSelector />} />
+              <Route path=":CategoryId/:seriesName" element={<pages.SeriesView />} />
             </Route>
             <Route path="Videos" element={<pages.Videos />} />
             <Route path="Projects" element={<pages.Projects />} />
             <Route path="Contacts" element={<pages.Contacts />} />
+            <Route path="Model" element={<Outlet />}>
+              <Route path=":ModelId" element={<pages.ModelView />} />
+            </Route>
           </Routes>
         </ScrollToTopWrapper>
       </RB.Row>
       <RB.Row>
         <Footer></Footer>
       </RB.Row>
-    </RB.Container>
+    </RB.Container >
   );
 }
 

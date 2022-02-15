@@ -15,7 +15,7 @@ function Catalog() {
         getCategories().then(res => {
             setCategories(res);
         })
-    });
+    }, []);
 
     return (
         <>

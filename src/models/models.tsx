@@ -7,10 +7,11 @@ export type Project = {
 export type Category = {
     id: number,
     name: string,
-    imgID: number
+    imgid: number
 };
 
 export type Model = {
+    id: number,
     name: string,
     powerVT: number,
     light_line: number,
