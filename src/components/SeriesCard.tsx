@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 const SeriesCard = (props: Series) => {
 
     let params = useParams();
-    const [imgPath, setImgPath] = useState<string>("NOIMAGE");
+    const [imgPath, setImgPath] = useState<string>("/noimage.png");
     var mountedRef = useRef(false);
     useEffect(() => {
         mountedRef.current = true;
@@ -25,9 +25,10 @@ const SeriesCard = (props: Series) => {
             if (mountedRef.current)
                 setImgPath(str);
         }).catch(err => {
+            //TODO: вынести это в api?
             console.log("image for " + props.imgID + " not found");
             if (mountedRef.current)
-                setImgPath("./noimage.png");
+                setImgPath("/noimage.png");
         })
     }, []);
 

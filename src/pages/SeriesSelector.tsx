@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSeries } from "../api/api";
 import { SeriesCard } from "../components";
@@ -24,10 +25,14 @@ const SeriesSelector = () => {
 
 
     return (<h2>
-        CatId: {params.CategoryId}
-        {series.map(el => {
-            return <SeriesCard {...el} />
-        })}
+        <Row style={{ paddingLeft: "20%", paddingRight: "20%" }}>
+            {series.map((el, index) => {
+                return (
+                    <Col xl={4} lg={6} key={index} style={{ marginBottom: 20 }}>
+                        <SeriesCard {...el} />
+                    </Col>)
+            })}
+        </Row>
     </h2>);
 }
 

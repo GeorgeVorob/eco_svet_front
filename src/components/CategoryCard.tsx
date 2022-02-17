@@ -9,7 +9,6 @@ import { Link, Route } from "react-router-dom";
 
 const CategoryCard = (props: Category) => {
     {
-        console.log("cat card props:", props);
         const [imgPath, setImgPath] = useState<string>("NOIMAGE");
         var mountedRef = useRef(false);
         useEffect(() => {
@@ -27,7 +26,7 @@ const CategoryCard = (props: Category) => {
             }).catch(err => {
                 console.log("image for " + props.imgid + " not found");
                 if (mountedRef.current)
-                    setImgPath("./noimage.png");
+                    setImgPath("/noimage.png");
             })
         }, []);
 

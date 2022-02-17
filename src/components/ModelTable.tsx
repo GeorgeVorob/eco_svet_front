@@ -7,7 +7,7 @@ import { debounce } from "lodash";
 
 import 'rc-slider/assets/index.css';
 import '../css/ModelTable.css'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export type ModelTableProps = {
     headerBgColor: string,
@@ -42,11 +42,11 @@ const handle = (props: any) => {
 //TODO: вынести onChange фильтра в отдельные функции, если так окажется правильнее
 const ModelTable = (props: ModelTableProps) => {
 
-    const powerMAX = 500;
+    const powerMAX = 200;
     const powerMIN = 0;
 
     const lightMAX = 20000;
-    const lightMIN = 200;
+    const lightMIN = 0;
 
     const [models, setModels] = useState<Model[]>([]);
     const [filter, setFilter] = useState<TableFilter>({
@@ -81,7 +81,7 @@ const ModelTable = (props: ModelTableProps) => {
         debouncedSearch(filter);
     }, [filter]);
 
-    //cansel on page change
+    //cancel on page change
     useEffect(() => {
         return () => {
             debouncedSearch.cancel();
@@ -95,6 +95,12 @@ const ModelTable = (props: ModelTableProps) => {
                     setModels(res);
             })
     }, []);
+
+    const navigate = useNavigate();
+    const rowClickHandle = (id: number) => {
+        //@ts-ignore
+        navigate("/Models/" + id);
+    }
     return (
         <>
             <Row style={{ textAlign: "center" }}>
@@ -175,33 +181,29 @@ const ModelTable = (props: ModelTableProps) => {
                     </tr>
                     {models.map((m, index) => {
                         return (
-                            <Link
-                                style={{ textDecoration: 'none', color: 'inherit', display: 'contents' }}
-                                to={"/Models/" + m.id}>
-                                <tr key={index}>
-                                    <td
-                                        style={{ width: "22.2%" }}
-                                    >{m.name}</td>
-                                    <td
-                                        style={{ width: "8.2%" }}
-                                    >{m.powerVT}</td>
-                                    <td
-                                        style={{ width: "14.2%" }}
-                                    >{m.light_line}</td>
-                                    <td
-                                        style={{ width: "7.2%" }}
-                                    >{m.protective_class}</td>
-                                    <td
-                                        style={{ width: "14.2%" }}
-                                    >{"от " + m.tempFROM + " до " + m.tempTO}</td>
-                                    <td
-                                        style={{ width: "14.2%" }}
-                                    >{m.size}</td>
-                                    <td
-                                        style={{ width: "19.2%" }}
-                                    >{m.montage}</td>
-                                </tr>
-                            </Link>
+                            <tr key={index} onClick={() => rowClickHandle(m.id)}>
+                                <td
+                                    style={{ width: "22.2%" }}
+                                >{m.name}</td>
+                                <td
+                                    style={{ width: "8.2%" }}
+                                >{m.powerVT}</td>
+                                <td
+                                    style={{ width: "14.2%" }}
+                                >{m.light_line}</td>
+                                <td
+                                    style={{ width: "7.2%" }}
+                                >{m.protective_class}</td>
+                                <td
+                                    style={{ width: "14.2%" }}
+                                >{"от " + m.tempFROM + " до " + m.tempTO}</td>
+                                <td
+                                    style={{ width: "14.2%" }}
+                                >{m.size}</td>
+                                <td
+                                    style={{ width: "19.2%" }}
+                                >{m.montage}</td>
+                            </tr>
                         )
                     })}
                 </tbody>
@@ -211,3 +213,7 @@ const ModelTable = (props: ModelTableProps) => {
 }
 
 export default ModelTable;
+
+function useHistory() {
+    throw new Error("Function not implemented.");
+}

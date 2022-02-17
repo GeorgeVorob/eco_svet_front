@@ -1,6 +1,6 @@
 import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
-import { Series } from '../models/types';
+import { getModelsFilter, Series } from '../models/types';
 import { tmpSeries } from './tmp'
 
 
@@ -58,7 +58,7 @@ const getSeries = (): Promise<Series[]> => {
     });
 }
 
-const getModels = (filter: TableFilter): Promise<Model[]> => {
+const getModels = (filter: getModelsFilter): Promise<Model[]> => {
     if (filter.name === "") delete filter.name;
     if (filter.IPProt === "") delete filter.IPProt;
 
@@ -73,11 +73,19 @@ const getModels = (filter: TableFilter): Promise<Model[]> => {
             json.map((el: any) => {
                 //TODO: переименовать поля в базе
                 el.powerVT = el.pawerVT;
-                delete el.parwerVT;
+                delete el.pawerVT;
 
                 el.tempFROM = el.temperatureROW;
+                delete el.temperatureROW;
+
                 el.tempTO = el.temperatureTO;
+                delete el.temperatureTO;
+
                 el.montage = el.motag;
+                delete el.motag;
+
+                el.photos = el.photo_models.map((p: any) => p.id);
+                delete el.photo_models;
             });
             return json
         })

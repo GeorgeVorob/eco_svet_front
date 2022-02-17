@@ -19,5 +19,6 @@ export type Model = {
     tempFROM: number,
     tempTO: number,
     size: string,
-    montage: string
+    montage: string,
+    photos: number[]
 }

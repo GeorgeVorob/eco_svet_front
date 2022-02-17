@@ -26,7 +26,7 @@ function App() {
       <RB.Row>
         <Header></Header>
       </RB.Row>
-      <RB.Row style={{ minHeight: "100vh" }}>
+      <RB.Row style={{ minHeight: "100vh", justifyContent: "center", alignContent: "baseline" }}>
         <ScrollToTopWrapper>
           <Routes>
             <Route path="" element={<pages.General />} />
@@ -38,7 +38,7 @@ function App() {
             <Route path="Videos" element={<pages.Videos />} />
             <Route path="Projects" element={<pages.Projects />} />
             <Route path="Contacts" element={<pages.Contacts />} />
-            <Route path="Model" element={<Outlet />}>
+            <Route path="Models" element={<Outlet />}>
               <Route path=":ModelId" element={<pages.ModelView />} />
             </Route>
           </Routes>

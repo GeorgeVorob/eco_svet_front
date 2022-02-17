@@ -25,7 +25,7 @@ function ProjectCard(props: Project) {
         }).catch(err => {
             console.log("image for " + props.name + " not found");
             if (mountedRef.current)
-                setImgPath("./noimage.png");
+                setImgPath("/noimage.png");
         })
     }, []);
 

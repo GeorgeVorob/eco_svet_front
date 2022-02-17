@@ -1,0 +1,13 @@
+.model-view-table {
+    height: 100%;
+    width: 100%;
+}
+
+.model-view-table th {
+    text-align: center;
+}
+
+.model-view-table tr {
+    border-bottom: 1px solid gray;
+    border-style: dashed;
+}

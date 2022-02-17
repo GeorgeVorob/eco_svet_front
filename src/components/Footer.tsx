@@ -19,21 +19,21 @@ function Footer() {
             >
                 <Col>
                     <img
-                        src="./ferex.png"
+                        src="/ferex.png"
                         alt="ferex"
                         style={{ objectFit: "contain" }}
                     />
                 </Col>
                 <Col>
                     <img
-                        src="./promled.png"
+                        src="/promled.png"
                         alt="promled"
                         style={{ objectFit: "contain" }}
                     />
                 </Col>
                 <Col>
                     <img
-                        src="./duray.png"
+                        src="/duray.png"
                         alt="duray"
                         style={{ objectFit: "contain" }}
                     />
