@@ -12,8 +12,9 @@ const SeriesSelector = () => {
     useEffect(() => {
         mountedRef.current = true;
 
-        getSeries()
+        getSeries(params.CategoryId as any)
             .then(res => {
+                console.log("series response:", res);
                 if (mountedRef.current)
                     setSeries(res);
             })

@@ -52,10 +52,22 @@ const getCategories = (): Promise<Category[]> => {
         })
 }
 
-const getSeries = (): Promise<Series[]> => {
-    return new Promise<Series[]>((resolve, reject) => {
-        resolve(tmpSeries);
-    });
+const getSeries = (catId: number): Promise<Series[]> => {
+    return fetch("/getSeries?id=" + catId)
+        .then(res => {
+            return res.json();
+        }).then(json => {
+            json.map((el: any) => {
+                el.name = el.series;
+                el.imgID = el.photo_models.length > 0 ? el.photo_models[0].id : null;
+            });
+            return json;
+        })
+}
+const getSeriesImage = (name: string): Promise<string> => {
+    return new Promise<string>((resolve, reject) => {
+        resolve("/noimage.png");
+    })
 }
 
 const getModels = (filter: getModelsFilter): Promise<Model[]> => {
@@ -94,4 +106,4 @@ const getModels = (filter: getModelsFilter): Promise<Model[]> => {
         })
 }
 
-export { getProjects, getProjectImage, getCategories, getModels, getModeLImage, getSeries }
+export { getProjects, getProjectImage, getCategories, getModels, getModeLImage, getSeries, getSeriesImage }

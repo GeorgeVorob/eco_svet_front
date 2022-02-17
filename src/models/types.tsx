@@ -10,5 +10,7 @@ export type getModelsFilter = {
     powTO?: number;
     lightFROM?: number,
     lightTO?: number,
-    IPProt?: string
+    IPProt?: string,
+    category?: number,
+    series?: string
 }

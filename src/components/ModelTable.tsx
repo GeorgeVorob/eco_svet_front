@@ -11,7 +11,12 @@ import { useNavigate } from "react-router-dom";
 
 export type ModelTableProps = {
     headerBgColor: string,
-    headerTextColor: string
+    headerTextColor: string,
+    externalFilter?: {
+        name?: string,
+        category?: number,
+        series?: string
+    }
 }
 
 export type TableFilter = {
@@ -41,7 +46,13 @@ const handle = (props: any) => {
 
 //TODO: вынести onChange фильтра в отдельные функции, если так окажется правильнее
 const ModelTable = (props: ModelTableProps) => {
-
+    var mountedRef = useRef(false);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
     const powerMAX = 200;
     const powerMIN = 0;
 
@@ -58,18 +69,9 @@ const ModelTable = (props: ModelTableProps) => {
         IPProt: ""
     });
 
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
-
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
-
     const debouncedSearch = React.useRef(
         debounce(async (filter: TableFilter) => {
-            getModels(filter)
+            getModels({ ...filter, ...props?.externalFilter })
                 .then(res => {
                     if (mountedRef.current)
                         setModels(res);
@@ -88,14 +90,6 @@ const ModelTable = (props: ModelTableProps) => {
         };
     }, [debouncedSearch]);
 
-    useEffect(() => {
-        getModels(filter)
-            .then(res => {
-                if (mountedRef.current)
-                    setModels(res);
-            })
-    }, []);
-
     const navigate = useNavigate();
     const rowClickHandle = (id: number) => {
         //@ts-ignore
@@ -103,14 +97,6 @@ const ModelTable = (props: ModelTableProps) => {
     }
     return (
         <>
-            <Row style={{ textAlign: "center" }}>
-                <Col sm={12}>
-                    <input type="text" placeholder="Название модели"
-                        value={filter.name ? filter.name : ""}
-                        onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-                    ></input>
-                </Col>
-            </Row>
             <Row>
                 <Col style={{ marginRight: 10 }}>
                     <div>Мощность</div>
