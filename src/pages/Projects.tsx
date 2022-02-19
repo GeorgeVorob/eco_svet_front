@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { getCategories } from "../api/api";
-import { CategoryCard } from "../components";
-import { Category } from "../models/models";
+import { getCategories, getProjects } from "../api/api";
+import { CategoryCard, ProjectCard } from "../components";
+import { Category, Project } from "../models/models";
 
 function Projects() {
-    const [categories, setCategories] = useState<Category[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
 
     useEffect(() => {
-        getCategories().then(res => {
-            setCategories(res);
+        getProjects().then(res => {
+            setProjects(res);
         })
     });
     return (
         <>
-            <Row style={{ paddingLeft: "20%", paddingRight: "20%" }}>
-                {categories.map(e => {
-                    return (
-                        <Col xl={4} lg={6} key={e.id} style={{ marginBottom: 20 }}>
-                            <CategoryCard {...e} />
-                        </Col>
-                    )
-                })}
+            <Row style={{ paddingLeft: "20%", paddingRight: "20%", marginTop: "55px" }}>
+                {projects.map(e => { return (<ProjectCard key={e.id} id={e.id} name={e.name} photos={e.photos} />) })}
             </Row>
         </>
     )

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Category } from '../models/models'
 
-import { getModeLImage } from '../api/api'
+import { getModeLImageURL } from '../api/api'
 
 import '../css/CategoryCard.css'
 import { Link, Route } from "react-router-dom";
@@ -19,24 +19,17 @@ const CategoryCard = (props: Category) => {
             };
         }, []);
 
-        useEffect(() => {
-            getModeLImage(props.imgid).then(str => {
-                if (mountedRef.current)
-                    setImgPath(str);
-            }).catch(err => {
-                console.log("image for " + props.imgid + " not found");
-                if (mountedRef.current)
-                    setImgPath("/noimage.png");
-            })
-        }, []);
-
         return (
             <Card
                 className="category-card"
             >
                 <Card.Img
                     variant="top"
-                    src={imgPath}
+                    src={getModeLImageURL(props.imgid)}
+                    onError={({ currentTarget }) => {
+                        currentTarget.onerror = null;
+                        currentTarget.src = "/noimage.png";
+                    }}
                 >
                 </Card.Img>
                 <Link

@@ -2,10 +2,10 @@ import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
 import { getModelsFilter, Series } from '../models/types';
 import { tmpSeries } from './tmp'
-
+import { apiAddr } from '../config';
 
 const getProjects = (): Promise<Project[]> => {
-    return fetch("/getProject")
+    return fetch(apiAddr + "/getProject")
         .then(res => {
             let a: Project[] = res.json() as any;
             return a;
@@ -13,47 +13,23 @@ const getProjects = (): Promise<Project[]> => {
 }
 
 
-const getProjectImage = (id: number): Promise<string> => {
-
-    return fetch("/getProjectImage?id=" + id)
-        .then(res => {
-            if (res.status === 404) {
-                const err = new Error("image not found");
-                throw err;
-            } else return res
-        })
-        .then(response => response.blob())
-        .then(imageBlob => {
-            const string: string = URL.createObjectURL(imageBlob);
-            return string;
-        });
+const getProjectImageURL = (id: number): string => {
+    return apiAddr + "/getProjectImage?id=" + id;
 }
 
-const getModeLImage = (id: number): Promise<string> => {
-
-    return fetch("/getModeLImage?id=" + id)
-        .then(res => {
-            if (res.status === 404) {
-                const err = new Error("image not found");
-                throw err;
-            } else return res
-        })
-        .then(response => response.blob())
-        .then(imageBlob => {
-            const string: string = URL.createObjectURL(imageBlob);
-            return string;
-        });
+const getModeLImageURL = (id: number): string => {
+    return apiAddr + "/getModeLImage?id=" + id;
 }
 
 const getCategories = (): Promise<Category[]> => {
-    return fetch("/getCategories")
+    return fetch(apiAddr + "/getCategories")
         .then(res => {
             return res.json();
         })
 }
 
 const getSeries = (catId: number): Promise<Series[]> => {
-    return fetch("/getSeries?id=" + catId)
+    return fetch(apiAddr + "/getSeries?id=" + catId)
         .then(res => {
             return res.json();
         }).then(json => {
@@ -74,7 +50,7 @@ const getModels = (filter: getModelsFilter): Promise<Model[]> => {
     if (filter.name === "") delete filter.name;
     if (filter.IPProt === "") delete filter.IPProt;
 
-    return fetch("/getModel?" + new URLSearchParams(filter as any))
+    return fetch(apiAddr + "/getModel?" + new URLSearchParams(filter as any))
         .then(res => {
             if (res.status != 404) {
                 return res.json() as any;
@@ -106,4 +82,4 @@ const getModels = (filter: getModelsFilter): Promise<Model[]> => {
         })
 }
 
-export { getProjects, getProjectImage, getCategories, getModels, getModeLImage, getSeries, getSeriesImage }
+export { getProjects, getProjectImageURL, getCategories, getModels, getModeLImageURL, getSeries, getSeriesImage }

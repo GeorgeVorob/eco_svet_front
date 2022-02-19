@@ -199,7 +199,3 @@ const ModelTable = (props: ModelTableProps) => {
 }
 
 export default ModelTable;
-
-function useHistory() {
-    throw new Error("Function not implemented.");
-}

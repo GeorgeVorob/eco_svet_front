@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
-import { getModeLImage } from '../api/api'
+import { getModeLImageURL } from '../api/api'
 
 import '../css/CategoryCard.css'
 import { Link } from "react-router-dom";
@@ -20,30 +20,24 @@ const SeriesCard = (props: Series) => {
         };
     }, []);
 
-    useEffect(() => {
-        getModeLImage(props.imgID).then(str => {
-            if (mountedRef.current)
-                setImgPath(str);
-        }).catch(err => {
-            //TODO: вынести это в api?
-            console.log("image for " + props.imgID + " not found");
-            if (mountedRef.current)
-                setImgPath("/noimage.png");
-        })
-    }, []);
-
     return (
         <Card
             className="category-card"
         >
             <Card.Img
                 variant="top"
-                src={imgPath}
+                src={getModeLImageURL(props.imgID)}
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.src = "/noimage.png";
+                }}
             >
             </Card.Img>
             <Link
                 style={{ textDecoration: 'none', color: 'inherit' }}
-                to={"/Catalog/" + params.CategoryId + "/" + props.name}>
+                to={"/Catalog/" + params.CategoryId + "/" + props.name}
+                state={{ img: getModeLImageURL(props.imgID) }}
+            >
                 <Card.Body style={{ backgroundColor: "#323232" }} className="smooth-hover dark-hover">
                     <Card.Title style={{ color: "white" }}>
                         {props.name}
