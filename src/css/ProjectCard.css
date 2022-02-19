@@ -7,8 +7,3 @@
     text-align: center;
     color: rgb(85, 110, 108)
 }
-
-.project-modal .modal-content {
-    background-color: transparent !important;
-    border: none;
-}

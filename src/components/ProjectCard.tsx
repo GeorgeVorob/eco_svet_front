@@ -1,17 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Card, Carousel, Modal } from 'react-bootstrap'
-import { JsxElement } from "typescript";
 import { getProjectImageURL } from "../api/api";
 import '../css/ProjectCard.css'
 import { Project } from "../models/models";
 import { apiAddr } from "../config";
 
 function ProjectCard(props: Project) {
-
-    const [imgPath, setImgPath] = useState<string>("NOIMAGE");
     const [clicked, setClicked] = useState<boolean>(false);
-    const [imgArray, setImgArray] = useState<string[]>([]);
 
     var mountedRef = useRef(false);
     useEffect(() => {
@@ -53,10 +49,9 @@ function ProjectCard(props: Project) {
                 show={clicked}
                 size="lg"
                 onHide={() => { if (mountedRef.current) setClicked(false) }}
-                className="project-modal"
+                className="transparent-modal"
             >
                 <Modal.Body
-                    className="project-modal"
                 >
                     <Carousel>
                         {props.photos.map((p, index) => {

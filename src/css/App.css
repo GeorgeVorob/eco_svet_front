@@ -19,3 +19,8 @@ header {
 .dark-hover:hover {
     background-color: black !important;
 }
+
+.transparent-modal .modal-content {
+    background-color: transparent !important;
+    border: none;
+}
