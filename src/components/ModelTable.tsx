@@ -70,8 +70,8 @@ const ModelTable = (props: ModelTableProps) => {
     });
 
     const debouncedSearch = React.useRef(
-        debounce(async (filter: TableFilter) => {
-            getModels({ ...filter, ...props?.externalFilter })
+        debounce(async (filter: TableFilter, _props: ModelTableProps) => {
+            getModels({ ...filter, ..._props?.externalFilter })
                 .then(res => {
                     if (mountedRef.current)
                         setModels(res);
@@ -80,8 +80,8 @@ const ModelTable = (props: ModelTableProps) => {
     ).current;
 
     useEffect(() => {
-        debouncedSearch(filter);
-    }, [filter]);
+        debouncedSearch(filter, props);
+    }, [filter, props?.externalFilter]);
 
     //cancel on page change
     useEffect(() => {

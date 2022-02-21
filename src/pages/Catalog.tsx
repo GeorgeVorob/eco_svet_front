@@ -11,6 +11,8 @@ function Catalog() {
 
     const [categories, setCategories] = useState<Category[]>([]);
 
+    const [nameFilter, setNameFilter] = useState<string>("");
+
     useEffect(() => {
         getCategories().then(res => {
             setCategories(res);
@@ -19,6 +21,15 @@ function Catalog() {
 
     return (
         <>
+            <Row style={{ paddingLeft: "20%", paddingRight: "20%" }}>
+                <Col sm={4}>
+                    <input type="text" placeholder="Поиск по названию..."
+                        style={{ width: "100%", marginBottom: "5px" }}
+                        value={nameFilter}
+                        onChange={(e: any) => setNameFilter(e.target.value)}
+                    ></input>
+                </Col>
+            </Row>
             <Row style={{ paddingLeft: "20%", paddingRight: "20%" }}>
                 {categories.map(e => {
                     return (
@@ -29,7 +40,7 @@ function Catalog() {
                 })}
             </Row>
             <Row style={{ paddingLeft: "10%", paddingRight: "10%", marginTop: 40 }}>
-                <ModelTable headerBgColor="#1c1c1c" headerTextColor="white" />
+                <ModelTable headerBgColor="#1c1c1c" headerTextColor="white" externalFilter={{ name: nameFilter }} />
             </Row>
             <Outlet />
         </>
