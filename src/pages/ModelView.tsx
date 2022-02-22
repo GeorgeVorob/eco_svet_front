@@ -41,6 +41,10 @@ function ModelView() {
             ;
     }, []);
 
+    const requestTTXHandle = (e: any) => {
+        //BUG: not implemented
+    }
+
     return (
         <>
             <Row style={{ width: "70%", maxHeight: 680 }}>
@@ -91,7 +95,7 @@ function ModelView() {
             </Row>
             <form style={{ width: "70%", textAlign: "end" }}>
                 <input type="email" placeholder="Эл. почта" required style={{ marginRight: "20px" }}></input>
-                <button className="btn formBtn main-font-1">Прислать подробные характеристики</button>
+                <button className="btn formBtn main-font-1" onClick={(e: any) => requestTTXHandle(e)}>Прислать подробные характеристики</button>
             </form>
         </>
     )

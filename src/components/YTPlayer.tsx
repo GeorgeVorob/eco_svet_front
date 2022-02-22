@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import YouTube from "react-youtube";
-import { ModelTable } from ".";
 
 import '../css/YTPlayer.css'
 
@@ -42,4 +41,3 @@ export default function YTPlayer(props: { id: string, name: string }) {
         </Modal>
     </>);
 }
-

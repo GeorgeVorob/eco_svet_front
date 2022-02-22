@@ -11,7 +11,7 @@ function Projects() {
         getProjects().then(res => {
             setProjects(res);
         })
-    });
+    }, []);
     return (
         <>
             <Row style={{ paddingLeft: "20%", paddingRight: "20%", marginTop: "55px" }}>
