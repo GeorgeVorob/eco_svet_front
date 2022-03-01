@@ -135,38 +135,42 @@ const ModelTable = (props: ModelTableProps) => {
                     </select>
                 </Col>
             </Row>
+            {/*BUG //TODO: заголовок таблицы мерцает в firefox, если прокручивать таблицу и водить мышкой по скроллбару. Сделал костыль, как оно багует см. коммит
+            f3a5567095e477accc5bbcc417a3aa49151f1ca5
+            */}
+            <tr
+                style={{ backgroundColor: props.headerBgColor, color: props.headerTextColor, position: "sticky", top: 0, textAlign: "center", display: "flex", alignItems: "center" }}
+            >
+                <td
+                    style={{ width: "22.2%" }}
+                >Модель</td>
+                <td
+                    style={{ width: "8.2%" }}
+                >Мощность, Вт</td>
+                <td
+                    style={{ width: "14.2%" }}
+                >Световой поток (Tj=25°C), лм</td>
+                <td
+                    style={{ width: "7.2%" }}
+                >Класс защиты, IP</td>
+                <td
+                    style={{ width: "14.2%" }}
+                >Температура эксплуатации, C</td>
+                <td
+                    style={{ width: "14.2%" }}
+                >Габариты, мм</td>
+                <td
+                    style={{ width: "19.2%" }}
+                >Монтаж</td>
+            </tr>
+
             <table className="model-table smooth-hover" style={{ borderColor: props.headerBgColor }} >
                 <tbody>
-                    <tr
-                        style={{ backgroundColor: props.headerBgColor, color: props.headerTextColor, position: "sticky", top: 0 }}
-                    >
-                        <td
-                            style={{ width: "22.2%" }}
-                        >Модель</td>
-                        <td
-                            style={{ width: "8.2%" }}
-                        >Мощность, Вт</td>
-                        <td
-                            style={{ width: "14.2%" }}
-                        >Световой поток (Tj=25°C), лм</td>
-                        <td
-                            style={{ width: "7.2%" }}
-                        >Класс защиты, IP</td>
-                        <td
-                            style={{ width: "14.2%" }}
-                        >Температура эксплуатации, C</td>
-                        <td
-                            style={{ width: "14.2%" }}
-                        >Габариты, мм</td>
-                        <td
-                            style={{ width: "19.2%" }}
-                        >Монтаж</td>
-                    </tr>
                     {models.map((m, index) => {
                         return (
-                            <tr key={index} onClick={() => rowClickHandle(m.id)}>
+                            <tr key={index} onClick={() => rowClickHandle(m.id)} style={{ display: "flex" }}>
                                 <td
-                                    style={{ width: "22.2%" }}
+                                    style={{ width: "24.2%" }}
                                 >{m.name}</td>
                                 <td
                                     style={{ width: "8.2%" }}
