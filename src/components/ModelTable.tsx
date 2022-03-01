@@ -8,6 +8,7 @@ import { debounce } from "lodash";
 import 'rc-slider/assets/index.css';
 import '../css/ModelTable.css'
 import { useNavigate } from "react-router-dom";
+import useMounted from "./useMounted";
 
 export type ModelTableProps = {
     headerBgColor: string,
@@ -46,17 +47,13 @@ const handle = (props: any) => {
 
 //TODO: вынести onChange фильтра в отдельные функции, если так окажется правильнее
 const ModelTable = (props: ModelTableProps) => {
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
-    const powerMAX = 200;
+
+    var mountedRef = useMounted();
+
+    const powerMAX = 1300;
     const powerMIN = 0;
 
-    const lightMAX = 20000;
+    const lightMAX = 200000;
     const lightMIN = 0;
 
     const [models, setModels] = useState<Model[]>([]);

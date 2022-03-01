@@ -6,18 +6,13 @@ import { getModeLImageURL } from '../api/api'
 
 import '../css/CategoryCard.css'
 import { Link, Route } from "react-router-dom";
+import useMounted from "./useMounted";
 
 const CategoryCard = (props: Category) => {
     {
         const [imgPath, setImgPath] = useState<string>("NOIMAGE");
-        var mountedRef = useRef(false);
-        useEffect(() => {
-            mountedRef.current = true;
 
-            return () => {
-                mountedRef.current = false;
-            };
-        }, []);
+        var mountedRef = useMounted();
 
         return (
             <Card

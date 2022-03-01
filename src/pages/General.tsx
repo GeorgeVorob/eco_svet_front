@@ -6,16 +6,8 @@ import '../css/General.css'
 import '../css/fontStyles.css'
 import { Link } from "react-router-dom";
 import { Project } from "../models/models";
-import { getProjects } from "../api/api";
-
-type generalState = {
-    projects: Project[],
-    formName: string,
-    formSurname: string,
-    formEmail: string,
-    formAddress: string,
-    formPhone: string;
-}
+import { getProjects, sendContacts } from "../api/api";
+import { generalState } from "../models/types";
 
 function General() {
 
@@ -32,22 +24,10 @@ function General() {
         getProjects().then(res => setState({ ...state, projects: res }));
     }, [])
 
-    const sendContacts = (e: React.FormEvent): void => {
+    const sendContactsHandle = (e: React.FormEvent): void => {
         e.preventDefault();
-        console.log("data:", e);
-        fetch("/live_contact", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: state.formName,
-                surname: state.formSurname,
-                email: state.formEmail,
-                address: state.formAddress,
-                phone: state.formPhone
-            }),
-        });
+
+        sendContacts(state);
         setState({
             ...state,
             formName: "",
@@ -82,7 +62,7 @@ function General() {
                 <form
                     style={{ float: "right", marginRight: 81, maxWidth: "220px" }}
                     className="transparent-form"
-                    onSubmit={sendContacts}
+                    onSubmit={sendContactsHandle}
                 >
                     <p className="main-font mb-4 ml-2 mr-2">оставить контакты</p>
                     <Form.Group>
@@ -95,7 +75,7 @@ function General() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className="mb-1">Эл. почта *</Form.Label>
-                        <Form.Control type="text" required onChange={(e) => formEmailHandle(e)} value={state.formEmail}></Form.Control>
+                        <Form.Control type="email" required onChange={(e) => formEmailHandle(e)} value={state.formEmail}></Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className="mb-1">Адрес</Form.Label>

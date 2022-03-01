@@ -3,19 +3,14 @@ import { Col, Row } from "react-bootstrap";
 import { useParams, useLocation } from "react-router-dom";
 import { getSeriesImage } from "../api/api";
 import { ModelTable } from "../components";
+import useMounted from "../components/useMounted";
 import { Series } from "../models/types";
 
 function SeriesView() {
     let params = useParams();
     const location = useLocation();
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
 
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
+    var mountedRef = useMounted();
 
     return (<>
         <Row style={{ paddingLeft: "10%", paddingRight: "10%" }}>

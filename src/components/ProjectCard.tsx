@@ -5,18 +5,12 @@ import { getProjectImageURL } from "../api/api";
 import '../css/ProjectCard.css'
 import { Project } from "../models/models";
 import { apiAddr } from "../config";
+import useMounted from "./useMounted";
 
 function ProjectCard(props: Project) {
     const [clicked, setClicked] = useState<boolean>(false);
 
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
-
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
+    var mountedRef = useMounted();
 
     if (clicked) {
         props.photos.forEach(element => {

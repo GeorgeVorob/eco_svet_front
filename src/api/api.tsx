@@ -1,6 +1,6 @@
 import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
-import { getModelsFilter, Series } from '../models/types';
+import { generalState, getModelsFilter, Series } from '../models/types';
 import { tmpSeries } from './tmp'
 import { apiAddr } from '../config';
 
@@ -82,4 +82,33 @@ const getModels = (filter: getModelsFilter): Promise<Model[]> => {
         })
 }
 
-export { getProjects, getProjectImageURL, getCategories, getModels, getModeLImageURL, getSeries, getSeriesImage }
+const sendContacts = (data: generalState): void => {
+    fetch(apiAddr + "/live_contact", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: data.formName,
+            surname: data.formSurname,
+            email: data.formEmail,
+            address: data.formAddress,
+            phone: data.formPhone
+        }),
+    });
+}
+
+const sendTTXRequest = (_email: string, _modelid: number): void => {
+    fetch(apiAddr + "/Zapros", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: _email,
+            idmodel: _modelid
+        }),
+    });
+}
+
+export { getProjects, getProjectImageURL, getCategories, getModels, getModeLImageURL, getSeries, getSeriesImage, sendTTXRequest, sendContacts }

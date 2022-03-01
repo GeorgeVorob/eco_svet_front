@@ -2,25 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 import { Model } from "../models/models";
-import { getModeLImageURL, getModels } from "../api/api"
+import { getModeLImageURL, getModels, sendTTXRequest } from "../api/api"
 import { Table } from "react-bootstrap"
 
 import "../css/ModelView.css"
+import useMounted from "../components/useMounted";
 
 function ModelView() {
     let params = useParams();
     const [data, setData] = useState<Model>();
     const [imgPath, setImgPath] = useState<string>();
+    const [email, setEmail] = useState<string>("");
 
-    //TODO: вынести это в хук
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
+    var mountedRef = useMounted();
 
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
 
     useEffect(() => {
         getModels({ id: params.ModelId as any })
@@ -41,8 +36,10 @@ function ModelView() {
             ;
     }, []);
 
-    const requestTTXHandle = (e: any) => {
-        //BUG: not implemented
+    const requestTTXHandle = (e: React.FormEvent) => {
+        e.preventDefault();
+        sendTTXRequest(email, data?.id as any);
+        setEmail("");
     }
 
     return (
@@ -94,7 +91,14 @@ function ModelView() {
                 </Col>
             </Row>
             <form style={{ width: "70%", textAlign: "end" }}>
-                <input type="email" placeholder="Эл. почта" required style={{ marginRight: "20px" }}></input>
+                <input
+                    type="email"
+                    placeholder="Эл. почта"
+                    required
+                    style={{ marginRight: "20px" }}
+                    value={email}
+                    onChange={(e: any) => setEmail(e.target.value)}
+                ></input>
                 <button className="btn formBtn main-font-1" onClick={(e: any) => requestTTXHandle(e)}>Прислать подробные характеристики</button>
             </form>
         </>

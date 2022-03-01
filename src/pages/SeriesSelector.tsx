@@ -3,27 +3,25 @@ import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSeries } from "../api/api";
 import { SeriesCard } from "../components";
+import useMounted from "../components/useMounted";
 import { Series } from "../models/types";
 
 const SeriesSelector = () => {
     let params = useParams();
     const [series, setSeries] = useState<Series[]>([]);
-    var mountedRef = useRef(false);
-    useEffect(() => {
-        mountedRef.current = true;
 
+    var mounted = useMounted();
+
+    useEffect(() => {
         getSeries(params.CategoryId as any)
             .then(res => {
                 console.log("series response:", res);
-                if (mountedRef.current)
+                if (mounted.current)
                     setSeries(res);
+                else
+                    console.log("got series, but mounted is ", mounted.current);
             })
-
-        return () => {
-            mountedRef.current = false;
-        };
     }, []);
-
 
     return (<h2>
         <Row style={{ paddingLeft: "20%", paddingRight: "20%" }}>
