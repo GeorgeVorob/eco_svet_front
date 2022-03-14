@@ -91,7 +91,7 @@ function General() {
             <Row
                 className="general-page-items"
             >
-                {state.projects.map(e => { return (<ProjectCard key={e.id} id={e.id} name={e.name} photos={e.photos} />) })}
+                {state.projects.slice(0, 4).map(e => { return (<ProjectCard key={e.id} id={e.id} name={e.name} photos={e.photos} />) })}
             </Row>
             <div
                 style={{

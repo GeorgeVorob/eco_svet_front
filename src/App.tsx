@@ -13,14 +13,7 @@ import * as pages from './pages'
 import * as RB from 'react-bootstrap'
 import { Header, Footer, ScrollToTopWrapper } from './components'
 
-var a: string;
-
-function getData() {
-  a = 'test123';
-}
-
 function App() {
-  getData();
   return (
     <RB.Container fluid>
       <RB.Row>
