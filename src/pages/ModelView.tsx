@@ -1,21 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom"
 import { Model } from "../models/models";
 import { getModeLImageURL, getModels, sendTTXRequest } from "../api/api"
-import { Table } from "react-bootstrap"
-
-import "../css/ModelView.css"
 import useMounted from "../components/useMounted";
+import "../css/ModelView.css"
 
 function ModelView() {
     let params = useParams();
+    var mountedRef = useMounted();
     const [data, setData] = useState<Model>();
     const [imgPath, setImgPath] = useState<string>();
     const [email, setEmail] = useState<string>("");
-
-    var mountedRef = useMounted();
-
 
     useEffect(() => {
         getModels({ id: params.ModelId as any })

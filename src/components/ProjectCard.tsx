@@ -9,14 +9,7 @@ import useMounted from "./useMounted";
 
 function ProjectCard(props: Project) {
     const [clicked, setClicked] = useState<boolean>(false);
-
     var mountedRef = useMounted();
-
-    if (clicked) {
-        props.photos.forEach(element => {
-
-        });
-    }
 
     return (
         <>
@@ -53,14 +46,16 @@ function ProjectCard(props: Project) {
                                 <Carousel.Item
                                     key={index}
                                 >
-                                    <img
-                                        style={{ maxHeight: "100vh", objectFit: "scale-down", width: "100%" }}
-                                        src={apiAddr + "/getProjectImage?id=" + p}
-                                        onError={({ currentTarget }) => {
-                                            currentTarget.onerror = null;
-                                            currentTarget.src = "/noimage.png";
-                                        }}
-                                    />
+                                    <div style={{ height: "90vh" }}>
+                                        <img
+                                            style={{ objectFit: "scale-down", width: "100%", height: "100%" }}
+                                            src={apiAddr + "/getProjectImage?id=" + p}
+                                            onError={({ currentTarget }) => {
+                                                currentTarget.onerror = null;
+                                                currentTarget.src = "/noimage.png";
+                                            }}
+                                        />
+                                    </div>
                                 </Carousel.Item>
                             )
                         })}

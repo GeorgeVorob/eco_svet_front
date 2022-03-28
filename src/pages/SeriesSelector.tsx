@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSeries } from "../api/api";
@@ -15,11 +15,8 @@ const SeriesSelector = () => {
     useEffect(() => {
         getSeries(params.CategoryId as any)
             .then(res => {
-                console.log("series response:", res);
                 if (mounted.current)
                     setSeries(res);
-                else
-                    console.log("got series, but mounted is ", mounted.current);
             })
     }, []);
 

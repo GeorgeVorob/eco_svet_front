@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  useLocation,
   Outlet
 } from "react-router-dom";
 import './css/App.css';

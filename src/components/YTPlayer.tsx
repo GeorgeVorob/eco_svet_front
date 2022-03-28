@@ -17,8 +17,10 @@ export default function YTPlayer(props: { id: string, name: string }) {
                 onClick={() => setOpened(true)}
             >
                 {/*TODO: highres thumbnails?*/}
-                <img style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                <img
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     src={"https://i3.ytimg.com/vi/" + props.id + "/hqdefault.jpg"}
+                    alt="video thumbnail"
                 />
                 <div className="hide">
                     Смотреть

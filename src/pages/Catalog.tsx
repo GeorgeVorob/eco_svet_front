@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Category } from '../models/models'
-
 import { CategoryCard, ModelTable } from "../components";
 import { Col, Row } from "react-bootstrap";
 import { getCategories } from "../api/api";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 
 function Catalog() {
-
     const [categories, setCategories] = useState<Category[]>([]);
-
     const [nameFilter, setNameFilter] = useState<string>("");
 
     useEffect(() => {

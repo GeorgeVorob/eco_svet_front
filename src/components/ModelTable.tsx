@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Model } from "../models/models";
 import { getModels } from '../api/api'
-import { Col, Row, Table } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { Handle, Range, SliderTooltip } from 'rc-slider';
 import { debounce } from "lodash";
-
-import 'rc-slider/assets/index.css';
-import '../css/ModelTable.css'
 import { useNavigate } from "react-router-dom";
 import useMounted from "./useMounted";
+import 'rc-slider/assets/index.css';
+import '../css/ModelTable.css'
 
 export type ModelTableProps = {
     headerBgColor: string,

@@ -1,4 +1,3 @@
-import React from "react";
 import { Col } from "react-bootstrap";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 

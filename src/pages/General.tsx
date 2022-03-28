@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Form, Row } from "react-bootstrap";
 import { ProjectCard } from '../components'
-
-import '../css/General.css'
-import '../css/fontStyles.css'
 import { Link } from "react-router-dom";
-import { Project } from "../models/models";
 import { getProjects, sendContacts } from "../api/api";
 import { generalState } from "../models/types";
+import '../css/General.css'
+import '../css/fontStyles.css'
 
 function General() {
 

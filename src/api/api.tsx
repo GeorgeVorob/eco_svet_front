@@ -1,7 +1,5 @@
-import { TableFilter } from '../components/ModelTable';
 import { Category, Model, Project } from '../models/models';
 import { generalState, getModelsFilter, Series } from '../models/types';
-import { tmpSeries } from './tmp'
 import { apiAddr } from '../config';
 
 const getProjects = (): Promise<Project[]> => {
@@ -33,7 +31,7 @@ const getSeries = (catId: number): Promise<Series[]> => {
         .then(res => {
             return res.json();
         }).then(json => {
-            json.map((el: any) => {
+            json.forEach((el: any) => {
                 el.name = el.series;
                 el.imgID = el.photo_models.length > 0 ? el.photo_models[0].id : null;
             });
@@ -52,14 +50,14 @@ const getModels = (filter: getModelsFilter): Promise<Model[]> => {
 
     return fetch(apiAddr + "/getModel?" + new URLSearchParams(filter as any))
         .then(res => {
-            if (res.status != 404) {
+            if (res.status !== 404) {
                 return res.json() as any;
             }
             else return [];
         })
         .then((json: any) => {
-            json.map((el: any) => {
-                //TODO: переименовать поля в базе
+            json.forEach((el: any) => {
+                //переименовать поля в базе?
                 el.powerVT = el.pawerVT;
                 delete el.pawerVT;
 

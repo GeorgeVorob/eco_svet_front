@@ -1,6 +1,4 @@
-import React from "react";
 import { Row, Col } from "react-bootstrap";
-import YouTube from "react-youtube";
 import { YTPlayer } from "../components";
 
 

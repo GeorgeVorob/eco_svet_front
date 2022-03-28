@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { getCategories, getProjects } from "../api/api";
-import { CategoryCard, ProjectCard } from "../components";
-import { Category, Project } from "../models/models";
+import { Row } from "react-bootstrap";
+import { getProjects } from "../api/api";
+import { ProjectCard } from "../components";
+import { Project } from "../models/models";
 
 function Projects() {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -12,6 +12,7 @@ function Projects() {
             setProjects(res);
         })
     }, []);
+
     return (
         <>
             <Row style={{ paddingLeft: "20%", paddingRight: "20%", marginTop: "55px" }}>

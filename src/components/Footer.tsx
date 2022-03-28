@@ -1,11 +1,8 @@
-import React from "react";
-
 import { Row, Col } from 'react-bootstrap'
 
 function Footer() {
     return (
         <footer
-
             style={{ textAlign: "center", marginTop: "100px" }}
         >
             <span

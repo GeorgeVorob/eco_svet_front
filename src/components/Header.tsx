@@ -1,13 +1,11 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom"
-import * as RB from "react-bootstrap"
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import '../css/Header.css'
+import { NavLink } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
+import '../css/Header.css';
 
 function Header() {
     return (
         <header className="App-header" id="top">
-            <RB.Navbar className="nav-font">
+            <Navbar className="nav-font">
                 <Nav className="m-auto">
                     <Nav.Link as={NavLink} to='/' className="nav-element">
                         Главная
@@ -24,16 +22,16 @@ function Header() {
                     <Nav.Link as={NavLink} to='/Contacts' className="nav-element">
                         Контакты
                     </Nav.Link>
-                    <RB.Navbar.Brand>
+                    <Navbar.Brand>
                         <img
                             alt="logo"
                             src="/headerLogo.png"
                             className="d-inline-block align-top"
                             style={{ height: "100%", marginLeft: "50px" }}
                         ></img>
-                    </RB.Navbar.Brand>
+                    </Navbar.Brand>
                 </Nav>
-            </RB.Navbar>
+            </Navbar>
         </header >
     );
 }

@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { Card } from "react-bootstrap";
 import { getModeLImageURL } from '../api/api'
 
@@ -6,14 +5,9 @@ import '../css/CategoryCard.css'
 import { Link } from "react-router-dom";
 import { Series } from "../models/types";
 import { useParams } from "react-router-dom";
-import useMounted from "./useMounted";
 
 const SeriesCard = (props: Series) => {
-
     let params = useParams();
-    const [imgPath, setImgPath] = useState<string>("/noimage.png");
-
-    var mountedRef = useMounted();
 
     return (
         <Card

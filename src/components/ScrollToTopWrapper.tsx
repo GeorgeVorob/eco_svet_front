@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { JsxElement } from "typescript";
 
 const ScrollToTopWrapper = (props: any) => {
     const location = useLocation();
