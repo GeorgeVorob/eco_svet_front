@@ -50,7 +50,7 @@ function ModelView() {
                         }}
                     ></img>
                 </Col>
-                <Col sm={6} style={{ padding: "10px 0px 20px 40px" }}>
+                <Col sm={6} style={{ padding: "10px 0px 20px 40px", minHeight: "500px" }}>
                     <table className="model-view-table">
                         <thead>
                             <tr>
