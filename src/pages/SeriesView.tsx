@@ -15,7 +15,7 @@ function SeriesView() {
                         currentTarget.onerror = null;
                         currentTarget.src = "/noimage.png";
                     }}
-                    style={{ marginLeft: 100, height: 400, objectFit: "scale-down" }}
+                    style={{ width: "100%", objectFit: "scale-down", height: "400px" }}
                 ></img>
             </Col>
             <Col sm={6}>
