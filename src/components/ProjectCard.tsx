@@ -17,6 +17,7 @@ function ProjectCard(props: Project) {
                 className="card"
             >
                 <Card.Img
+                    style={{ height: "70%" }}
                     variant="top"
                     src={getProjectImageURL(props.photos[0])}
                     onClick={() => { if (mountedRef.current) setClicked(true) }}
@@ -26,7 +27,9 @@ function ProjectCard(props: Project) {
                     }}
                 >
                 </Card.Img>
-                <Card.Body>
+                <Card.Body
+                    style={{ height: "30%", objectFit: "cover" }}
+                >
                     <Card.Title className="main-font-2">
                         {props.name}
                     </Card.Title>
