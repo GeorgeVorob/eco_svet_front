@@ -25,7 +25,7 @@ export type TableFilter = {
     powTO: number;
     lightFROM: number,
     lightTO: number,
-    IPProt?: string
+    protective_class?: string
 }
 
 //TODO: деть это куда нибуть
@@ -62,7 +62,7 @@ const ModelTable = (props: ModelTableProps) => {
         powTO: powerMAX,
         lightFROM: lightMIN,
         lightTO: lightMAX,
-        IPProt: ""
+        protective_class: ""
     });
 
     const debouncedSearch = React.useRef(
@@ -127,10 +127,17 @@ const ModelTable = (props: ModelTableProps) => {
                     />
                 </Col>
                 <Col>
-                    <select value={filter.IPProt} onChange={(e) => setFilter({ ...filter, IPProt: e.target.value })}>
+                    <select value={filter.protective_class} onChange={(e) => setFilter({ ...filter, protective_class: e.target.value })}>
                         <option value="" defaultChecked>Степень защиты</option>
                         <option value="IP66">IP66</option>
                         <option value="IP65">IP65</option>
+                        <option value="IP54">IP54</option>
+                        <option value="IP20">IP20</option>
+                        <option value="IP40">IP40</option>
+                        <option value="IP67">IP67</option>
+                        <option value="IP30">IP30</option>
+                        <option value="IP31">IP31</option>
+                        <option value="IP32">IP32</option>
                     </select>
                 </Col>
             </Row>

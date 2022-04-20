@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { Card, Carousel, Modal } from 'react-bootstrap'
 import { getProjectImageURL } from "../api/api";
@@ -30,7 +30,7 @@ function ProjectCard(props: Project) {
                 <Card.Body
                     style={{ height: "30%", objectFit: "cover" }}
                 >
-                    <Card.Title className="main-font-2">
+                    <Card.Title className="main-font-2" style={{ wordWrap: "normal" }}>
                         {props.name}
                     </Card.Title>
                 </Card.Body>
@@ -57,6 +57,7 @@ function ProjectCard(props: Project) {
                                                 currentTarget.onerror = null;
                                                 currentTarget.src = "/noimage.png";
                                             }}
+                                            alt="project image"
                                         />
                                     </div>
                                 </Carousel.Item>

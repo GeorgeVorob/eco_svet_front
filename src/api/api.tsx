@@ -46,7 +46,6 @@ const getSeriesImage = (name: string): Promise<string> => {
 
 const getModels = (filter: getModelsFilter): Promise<Model[]> => {
     if (filter.name === "") delete filter.name;
-    if (filter.IPProt === "") delete filter.IPProt;
 
     return fetch(apiAddr + "/getModel?" + new URLSearchParams(filter as any))
         .then(res => {

@@ -1,6 +1,7 @@
 .card {
     max-width: 260px !important;
     border: none !important;
+    padding: 10px 10px 10px 10px;
 }
 
 .card .card-title {
