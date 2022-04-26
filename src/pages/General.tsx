@@ -55,7 +55,7 @@ function General() {
     return (
         <>
             <div
-                style={{ padding: "0px 0px 0px 0px", backgroundImage: 'url(./mainPageImage.png)', backgroundRepeat: "repeat-x" }}
+                style={{ padding: "0px 0px 0px 0px", backgroundImage: 'url(./mainPageImage.webp)', backgroundRepeat: "repeat-x" }}
             >
                 <form
                     style={{ float: "right", marginRight: 81, maxWidth: "220px" }}
