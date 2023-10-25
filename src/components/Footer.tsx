@@ -12,7 +12,7 @@ function Footer() {
                 }}
             >поставщики</span>
             <Row
-                style={{ marginTop: "20px",  width: 1000 ,marginLeft:"500px",marginRight:"500px"}}
+                style={{ marginTop: "20px"}}
             >
                 <Col>
                     <img
