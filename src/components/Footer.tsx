@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap'
+    import { Row, Col } from 'react-bootstrap'
 
 function Footer() {
     return (
@@ -12,27 +12,20 @@ function Footer() {
                 }}
             >поставщики</span>
             <Row
-                style={{ marginTop: "20px" }}
+                style={{ marginTop: "20px",  width: 1000 ,marginLeft:"500px",marginRight:"500px"}}
             >
                 <Col>
                     <img
                         src="/ferex.png"
                         alt="ferex"
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "contain"}}
                     />
                 </Col>
                 <Col>
                     <img
                         src="/promled.png"
                         alt="promled"
-                        style={{ objectFit: "contain" }}
-                    />
-                </Col>
-                <Col>
-                    <img
-                        src="/duray.png"
-                        alt="duray"
-                        style={{ objectFit: "contain" }}
+                        style={{ objectFit: "contain"}}
                     />
                 </Col>
             </Row>
